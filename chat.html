@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Secret Chat 💗</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+<main class="chat-page">
+
+    <a href="index.html" class="back-button">← Back to Our Love Story</a>
+
+    <header class="chat-header">
+        <div class="profile">
+            <div class="avatar">💗</div>
+            <div>
+                <h1>Our Little Chat</h1>
+                <p>Eva & Mahin · Always connected</p>
+            </div>
+        </div>
+        <span class="online">● Online</span>
+    </header>
+
+    <section id="chatList" class="chat-list">
+        <h2>Our Funny Messages 😂</h2>
+        <p class="subtitle">Click any message to read our conversation 💌</p>
+    </section>
+
+    <section id="conversation" class="conversation hidden">
+        <button id="backChats" class="back-chat">← All Messages</button>
+
+        <div class="conversation-heading">
+            <div class="avatar">🥰</div>
+            <div>
+                <h2 id="conversationTitle">Our Conversation</h2>
+                <p>Just our silly little talks ❤️</p>
+            </div>
+        </div>
+
+        <div id="messages" class="messages"></div>
+
+        <div class="chat-footer">Made with love, just for Eva ♡</div>
+    </section>
+
+</main>
+
+<script src="chat.js"></script>
+</body>
+</html>
+<!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="m.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" onclick="toggleMusic()">
+        🎵 Play Our Song
+    </button>
+
+    <style>
+        #musicButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff80ab;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px #0002;
+        }
+    </style>
+
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicButton.innerHTML = "⏸ Pause Our Song";
+                sessionStorage.setItem("songPlaying", "true");
+            } else {
+                music.pause();
+                musicButton.innerHTML = "🎵 Play Our Song";
+                sessionStorage.setItem("songPlaying", "false");
+            }
+        }
+
+        window.addEventListener("load", function () {
+            const savedTime = sessionStorage.getItem("songTime");
+            if (savedTime) {
+                music.currentTime = Number(savedTime);
+            }
+
+            if (sessionStorage.getItem("songPlaying") === "true") {
+                music.play().then(() => {
+                    musicButton.innerHTML = "⏸ Pause Our Song";
+                }).catch(() => {
+                    musicButton.innerHTML = "🎵 Continue Our Song";
+                });
+            }
+        });
+
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.setItem("songTime", music.currentTime);
+        });
+    </script>
+
+</body>
+</html>

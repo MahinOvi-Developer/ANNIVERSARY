@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Restaurant Memories ❤️</title>
+
+    <link rel="stylesheet" href="restaurants.css">
+</head>
+
+<body>
+
+    <main class="restaurant-page">
+
+        <a href="index.html" class="back-button">
+            ← Back to Our Love Story
+        </a>
+
+        <header class="heading">
+            <span>OUR FOOD & LOVE MEMORIES 🍕</span>
+            <h1>Places We <em>Ate Together</em></h1>
+            <p>Good food tastes better when I am with you. 💗</p>
+        </header>
+
+        <section class="intro-card">
+            <div class="intro-icon">🍰</div>
+            <div>
+                <h2>Our Little Food Journey</h2>
+                <p>Every restaurant has a story. Let's keep our memories here.</p>
+            </div>
+        </section>
+
+        <div class="restaurant-count">
+            <span>Our Restaurant Collection</span>
+            <strong id="restaurantCount">21 Places</strong>
+        </div>
+
+        <section id="restaurantGrid" class="restaurant-grid">
+            <!-- Restaurant cards will appear here from restaurants.js -->
+        </section>
+
+        <footer>
+            Collected with love, just for Eva ♡
+        </footer>
+
+    </main>
+
+    <script src="restaurants.js"></script>
+</body>
+</html><!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="m.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" onclick="toggleMusic()">
+        🎵 Play Our Song
+    </button>
+
+    <style>
+        #musicButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff80ab;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px #0002;
+        }
+    </style>
+
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicButton.innerHTML = "⏸ Pause Our Song";
+                sessionStorage.setItem("songPlaying", "true");
+            } else {
+                music.pause();
+                musicButton.innerHTML = "🎵 Play Our Song";
+                sessionStorage.setItem("songPlaying", "false");
+            }
+        }
+
+        window.addEventListener("load", function () {
+            const savedTime = sessionStorage.getItem("songTime");
+            if (savedTime) {
+                music.currentTime = Number(savedTime);
+            }
+
+            if (sessionStorage.getItem("songPlaying") === "true") {
+                music.play().then(() => {
+                    musicButton.innerHTML = "⏸ Pause Our Song";
+                }).catch(() => {
+                    musicButton.innerHTML = "🎵 Continue Our Song";
+                });
+            }
+        });
+
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.setItem("songTime", music.currentTime);
+        });
+    </script>
+
+</body>
+</html>
+

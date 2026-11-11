@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eva's Special Gift ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffe1ed, #fff4e8, #fbdce9);
+    color: #945b74;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+}
+
+.top-icon {
+    font-size: 55px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    color: #d45d8a;
+    font-size: 30px;
+    margin: 18px 0;
+}
+
+.subtitle {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.instruction {
+    display: inline-block;
+    background: #fff0f5;
+    padding: 12px 22px;
+    border-radius: 30px;
+    margin: 15px 0 30px;
+    color: #c34f7b;
+    font-weight: bold;
+}
+
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gift-box {
+    background: rgba(255,255,255,0.85);
+    border: 2px solid #f5bcd1;
+    border-radius: 22px;
+    padding: 25px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 7px 18px #d88aa522;
+}
+
+.gift-box:hover:not(.locked) {
+    transform: translateY(-7px);
+    background: #ffeaf2;
+    box-shadow: 0 10px 25px #d88aa544;
+}
+
+.gift-box.selected {
+    border: 3px solid #d94e83;
+    background: #ffe2ed;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px #d94e8355;
+}
+
+.gift-box.locked {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.gift-icon {
+    font-size: 55px;
+    margin-bottom: 12px;
+}
+
+.gift-box h3 {
+    font-size: 14px;
+    color: #c44f7d;
+}
+
+.gift-box p {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.message {
+    margin-top: 35px;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #fff8fb, #ffe9f1);
+    border-radius: 25px;
+    border: 2px solid #f2bfd1;
+    display: none;
+    box-shadow: 0 10px 30px #d88aa533;
+    animation: show 0.7s ease;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.result-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.message h2 {
+    color: #d34d80;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.message p {
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.love-note {
+    margin-top: 22px;
+    color: #d34d80;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.next {
+    display: none;
+    margin-top: 28px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #f5a2c0, #d96896);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 6px 18px #d9689640;
+    transition: 0.3s;
+}
+
+.next:hover {
+    transform: translateY(-5px);
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 13px;
+    color: #bd8299;
+}
+
+@media(max-width: 400px) {
+    .gift-grid {
+        gap: 12px;
+    }
+
+    .gift-box {
+        padding: 20px 5px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top-icon">🎁💗🎀</div>
+
+    <h1>Choose Your Special Gift</h1>
+
+    <p class="subtitle">
+        My Beautiful Eva 🥹
+        <br>
+        Five little boxes, but you can choose only ONE!
+    </p>
+
+    <div class="instruction">
+        💕Try Your Luck! 💕
+        <br>
+        Choose Your Box!
+    </div>
+
+    <!-- FIVE GIFT BOXES -->
+
+    <div class="gift-grid">
+
+        <div class="gift-box" onclick="chooseGift(this)">
+            <div class="gift-icon">🎁</div>
+            <h3>Plese choose me 💗</h3>
+            <p>Gift Box 01</p>
+        </div>
+
+        <div class="gift-box" onclick="chooseGift(this)">
+            <div class="gift-icon">🎁</div>
+            <h3>Tumi jitbe  💗</h3>
+            <p>Gift Box 02</p>
+        </div>
+
+        <div class="gift-box" onclick="chooseGift(this)">
+            <div class="gift-icon">🎁</div>
+            <h3>Amk choose  koro💗</h3>
+            <p>Gift Box 03</p>
+        </div>
+
+        <div class="gift-box" onclick="chooseGift(this)">
+            <div class="gift-icon">🎁</div>
+            <h3>Oi Amk choose kor 💗</h3>
+            <p>Gift Box 04</p>
+        </div>
+
+        <div class="gift-box" onclick="chooseGift(this)">
+            <div class="gift-icon">🎁</div>
+            <h3>choose koiro na  💗</h3>
+            <p>Gift Box 05</p>
+        </div>
+
+    </div>
+
+    <!-- SAME BANGLISH NOTE FOR EVERY BOX -->
+
+    <div class="message" id="message">
+
+        <div class="result-icon">💗🥰</div>
+
+        <h2>SHEI ❤️</h2>
+
+        <p>
+            Hehe! Eva, tumi tomar special box choose korecho! 🥹
+            <br><br>
+
+           Cholo Segs kory .......
+            <br><br>
+
+           
+            
+
+         
+
+        <div class="love-note">
+            VALOBASHI EVA ❤️
+        </div>
+
+    </div>
+
+    <!-- FINAL PAGE BUTTON -->
+
+    <a href="last-message.html" class="next" id="nextButton">
+        Final Love Letter ❤️ →
+    </a>
+
+    <div class="footer">
+        Made with endless love by Mahin 💕
+        <br>
+        🌷 Forever Together 🌷
+    </div>
+
+</div>
+
+<script>
+
+let alreadySelected = false;
+
+function chooseGift(box) {
+
+    // Only one box can be selected
+
+    if (alreadySelected) {
+        return;
+    }
+
+    alreadySelected = true;
+
+    // Select clicked box
+
+    box.classList.add("selected");
+
+    box.querySelector(".gift-icon").innerHTML = "💝";
+
+    // Lock other four boxes
+
+    document.querySelectorAll(".gift-box").forEach(item => {
+
+        if (item !== box) {
+            item.classList.add("locked");
+        }
+
+    });
+
+    // Show Banglish message
+
+    document.getElementById("message").style.display = "block";
+
+    // Show final message button
+
+    document.getElementById("nextButton").style.display = "inline-block";
+
+    // Scroll to message
+
+    document.getElementById("message").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
+<!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="m.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" onclick="toggleMusic()">
+        🎵 Play Our Song
+    </button>
+
+    <style>
+        #musicButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff80ab;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px #0002;
+        }
+    </style>
+
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicButton.innerHTML = "⏸ Pause Our Song";
+                sessionStorage.setItem("songPlaying", "true");
+            } else {
+                music.pause();
+                musicButton.innerHTML = "🎵 Play Our Song";
+                sessionStorage.setItem("songPlaying", "false");
+            }
+        }
+
+        window.addEventListener("load", function () {
+            const savedTime = sessionStorage.getItem("songTime");
+            if (savedTime) {
+                music.currentTime = Number(savedTime);
+            }
+
+            if (sessionStorage.getItem("songPlaying") === "true") {
+                music.play().then(() => {
+                    musicButton.innerHTML = "⏸ Pause Our Song";
+                }).catch(() => {
+                    musicButton.innerHTML = "🎵 Continue Our Song";
+                });
+            }
+        });
+
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.setItem("songTime", music.currentTime);
+        });
+    </script>
+
+</body>
+</html>
+

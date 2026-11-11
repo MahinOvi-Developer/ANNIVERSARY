@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Travel Memories 💗</title>
+
+    <link rel="stylesheet" href="places.css">
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+    <main class="places-page">
+
+        <a href="index.html" class="back-button">
+            ← Back to Our Love Story
+        </a>
+
+        <header class="places-heading">
+            <span>OUR LITTLE ADVENTURES 🌷</span>
+            <h1>Places We <em>Visited</em></h1>
+            <p>Every place has a memory, and every memory has you. ❤️</p>
+        </header>
+
+        <section class="map-card">
+            <div class="map-title">
+                <div>
+                    <h2>Our Memory Map 💗</h2>
+                    <p>Tap the pink hearts to explore our memories.</p>
+                </div>
+                <span class="map-icon">📍</span>
+            </div>
+
+            <div id="memoryMap"></div>
+
+            <p class="map-note">
+                💕 Our little memories around Dhaka
+            </p>
+        </section>
+
+        <section class="places-list">
+            <h2>Our Favourite Places 🌸</h2>
+            <p class="list-subtitle">Click a place to explore it on the map.</p>
+
+            <div id="placeList" class="place-grid"></div>
+        </section>
+
+        <footer>
+            Made with love, just for Eva ♡
+        </footer>
+
+    </main>
+
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="places.js"></script>
+
+</body>
+</html>
+<!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="m.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" onclick="toggleMusic()">
+        🎵 Play Our Song
+    </button>
+
+    <style>
+        #musicButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff80ab;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px #0002;
+        }
+    </style>
+
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicButton.innerHTML = "⏸ Pause Our Song";
+                sessionStorage.setItem("songPlaying", "true");
+            } else {
+                music.pause();
+                musicButton.innerHTML = "🎵 Play Our Song";
+                sessionStorage.setItem("songPlaying", "false");
+            }
+        }
+
+        window.addEventListener("load", function () {
+            const savedTime = sessionStorage.getItem("songTime");
+            if (savedTime) {
+                music.currentTime = Number(savedTime);
+            }
+
+            if (sessionStorage.getItem("songPlaying") === "true") {
+                music.play().then(() => {
+                    musicButton.innerHTML = "⏸ Pause Our Song";
+                }).catch(() => {
+                    musicButton.innerHTML = "🎵 Continue Our Song";
+                });
+            }
+        });
+
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.setItem("songTime", music.currentTime);
+        });
+    </script>
+
+</body>
+</html>
+

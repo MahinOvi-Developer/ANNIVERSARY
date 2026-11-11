@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Little Love Story ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="fireworks"></canvas>
+    <div class="hearts" id="hearts"></div>
+
+    <main class="page">
+
+        <div class="small-label">✿ A LITTLE CELEBRATION OF LOVE ✿</div>
+
+        <h1>Happy <span>Anniversary</span></h1>
+
+        <p class="subtitle">
+            Every love story is beautiful, but ours is my favourite. 💗
+        </p>
+
+        <section class="photo-section">
+            <div class="photo-decoration">♡</div>
+
+            <div class="photo-frame">
+                <img src="OIP.webp" alt="Our beautiful memory"
+                     onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='flex';">
+
+                <div class="photo-fallback" id="photoFallback">
+                    <span>♡</span>
+                    <p>Add Your Beautiful Photo</p>
+                </div>
+            </div>
+
+            <div class="photo-caption">You & Me, Forever 💕</div>
+        </section>
+
+
+       <div class="page-navigation">
+
+    <a href="calendar.html" class="nav-button calendar-btn">
+        <span>📅</span>
+        <span>
+            <strong>Our Special Days</strong>
+            <small>Explore our beautiful moments</small>
+        </span>
+        <span class="arrow">→</span>
+    </a>
+
+    <a href="places.html" class="nav-button places-btn">
+        <span>📍</span>
+        <span>
+            <strong>Our Travel Memories</strong>
+            <small>Explore places we visited</small>
+        </span>
+        <span class="arrow">→</span>
+    </a>
+
+    <a href="restaurants.html" class="nav-button restaurant-btn">
+        <span>🍕</span>
+        <span>
+            <strong>Our Restaurant Memories</strong>
+            <small>Explore our food memories</small>
+        </span>
+        <span class="arrow">→</span>
+
+    </a><a href="chat.html" class="nav-button chat-btn">
+    <span>💬</span>
+    <span>
+        <strong>Our Secret Chats</strong>
+        <small>Read our funny conversations</small>
+    </span>
+    <span class="arrow">→</span>
+</a><a href="gift-slot.html" class="next-button">
+    🎁 Open Your Special Gift →
+</a> 
+<a href="last-message.html" class="next-button">
+    One Last Surprise ❤️ →
+</a>
+</div>
+
+</div>
+
+</div>
+       >
+
+        <footer>
+            <p>Made with endless love, just for you. ❤️</p>
+            <p>Forever Yours ♡</p>
+        </footer>
+
+    </main>
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-card">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="popup-heart">💗</div>
+            <h2>One More Thing...</h2>
+            <p>
+                No matter how many days pass,
+                I will always be happy to have you in my life.
+            </p>
+            <h3>Will You Stay With Me Forever? 🥺</h3>
+            <button class="yes-btn" id="yesBtn">Forever & Always! ❤️</button>
+            <p class="popup-result" id="popupResult"></p>
+        </div>
+    </div>
+
+       <script src="script.js"></script>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="m.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" onclick="toggleMusic()">
+        🎵 Play Our Song
+    </button>
+
+    <style>
+        #musicButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff80ab;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px #0002;
+        }
+    </style>
+
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicButton.innerHTML = "⏸ Pause Our Song";
+                sessionStorage.setItem("songPlaying", "true");
+            } else {
+                music.pause();
+                musicButton.innerHTML = "🎵 Play Our Song";
+                sessionStorage.setItem("songPlaying", "false");
+            }
+        }
+
+        window.addEventListener("load", function () {
+            const savedTime = sessionStorage.getItem("songTime");
+            if (savedTime) {
+                music.currentTime = Number(savedTime);
+            }
+
+            if (sessionStorage.getItem("songPlaying") === "true") {
+                music.play().then(() => {
+                    musicButton.innerHTML = "⏸ Pause Our Song";
+                }).catch(() => {
+                    musicButton.innerHTML = "🎵 Continue Our Song";
+                });
+            }
+        });
+
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.setItem("songTime", music.currentTime);
+        });
+    </script>
+
+</body>
+</html>
